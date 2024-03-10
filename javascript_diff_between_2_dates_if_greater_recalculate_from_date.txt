@@ -1,0 +1,33 @@
+var fromdateString = "23/10/2015"; // Oct 23
+var todateString = "23/11/2016"; 
+
+console.log(fromdateString);
+console.log(todateString);
+
+var fromdateParts = fromdateString.split("/");
+var todateParts = todateString.split("/");
+
+var fromdateObject = new Date(+fromdateParts[2], fromdateParts[1] - 1, +fromdateParts[0]); 
+var todateObject = new Date(+todateParts[2], todateParts[1] - 1, +todateParts[0]); 
+
+console.log(fromdateObject.toString());
+console.log(todateObject.toString());
+
+var diffYear =(todateObject.getTime() - fromdateObject.getTime()) / 1000;
+diffYear /= (60 * 60 * 24);
+var yeardiff = diffYear/365.25;
+
+console.log(yeardiff);
+
+if(yeardiff > 0){
+   fromdateObject.setFullYear(todateObject.getFullYear() - 1, todateObject.getMonth(), todateObject.getDate());
+}
+
+console.log(fromdateObject.toString());
+console.log(todateObject.toString());
+
+fromdateString = fromdateObject.getDate()+"/"+(fromdateObject.getMonth() + 1)+"/"+fromdateObject.getFullYear();
+todateString = todateObject.getDate()+"/"+(todateObject.getMonth() + 1)+"/"+todateObject.getFullYear();
+
+console.log(fromdateString);
+console.log(todateString);
